@@ -1,0 +1,27 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/core-scaffold/core-scaffold.html">
+<link rel="import" href="/bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="/bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="/bower_components/core-item/core-item.html">
+
+<polymer-element name="sidebar-layout" attributes="selected" noscript>
+  <template>
+    <link rel="stylesheet" href="sidebar-layout.css">
+    <core-scaffold>
+      <core-header-panel navigation flex mode="seamed">
+        <core-toolbar>Ramón López</core-toolbar>
+          <core-item icon="home" label="Home" active?="{{selected == 'home'}}"><a href="/#"></a></core-item>
+        <core-item icon="language" label="Languages" active?="{{selected == 'languages'}}"><a href="/#/languages"></a></core-item>
+        <core-item icon="accessibility" label="Life" active?="{{selected == 'life'}}"><a href="/#/life"></a></core-item>
+          <core-item icon="create" label="Skills" active?="{{selected == 'skills'}}"><a href="/#/skills"></a></core-item>
+          <core-item icon="account-balance" label="Education" active?="{{selected == 'education'}}"><a href="/#/education"></a></core-item>
+      </core-header-panel>
+      <div tool>
+        <content select=".title"></content>
+      </div>
+      <div class="content">
+        <content></content>
+      </div>
+    </core-scaffold>
+  </template>
+</polymer-element>

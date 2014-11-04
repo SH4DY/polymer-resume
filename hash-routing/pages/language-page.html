@@ -1,0 +1,165 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/layouts/sidebar-layout.html">
+
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bower_components/paper-progress/paper-progress.html">
+<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog-transition.html">
+
+<polymer-element name="language-page">
+  <template>
+      <style>
+          section{
+              background-color: #f0f0f0;
+              border-radius: 5px;
+              margin: 10px;
+              padding: 10px;
+              max-width: 700px;
+          }
+          paper-progress {
+              display: block;
+              width: 95%;
+              margin: 16px;
+          }
+
+          paper-button:hover{
+              background-color: #eee;
+          }
+
+          paper-progress.pink::shadow #activeProgress {
+              background-color: #e91e63;
+          }
+
+          paper-progress.purple::shadow #activeProgress {
+              background-color: #9c27b0;
+          }
+
+          paper-progress.deep-purple::shadow #activeProgress {
+              background-color: #673ab7;
+          }
+      </style>
+
+    <sidebar-layout selected="language">
+
+      <div class="title">Languages</div>
+
+        <section>
+            <paper-icon-button id="germanIcon" class="pink" on-tap="{{showToast}}" icon="check"></paper-icon-button>
+            <span>German</span>
+            <paper-progress class="pink red yellow" language-level="100"></paper-progress>
+            <paper-button on-tap="{{showDialog}}" id="infoGerman" raised>More Info</paper-button>
+        </section>
+
+        <section>
+            <paper-icon-button id="englishIcon" class="purple" on-tap="{{showToast}}"
+                               icon="check"></paper-icon-button>
+            <span>English</span>
+            <paper-progress class="purple" language-level="70"></paper-progress>
+            <paper-button on-tap="{{showDialog}}" id="infoEnglish" raised>More Info</paper-button>
+        </section>
+
+        <section>
+            <paper-icon-button id="spanishIcon" class="deep-purple" on-tap="{{showToast}}"
+                               icon="check"></paper-icon-button>
+            <span>Spanish</span>
+            <paper-progress class="deep-purple" language-level="70"></paper-progress>
+            <paper-button on-tap="{{showDialog}}" id="infoSpanish" raised>More Info</paper-button>
+        </section>
+
+
+        <paper-toast id="toast1" text="Danke!"></paper-toast>
+        <paper-toast id="toast2" text="Gracias!"></paper-toast>
+        <paper-toast id="toast3" text="Thank you!"></paper-toast>
+
+
+        <paper-dialog id="dialogGerman" heading="German skills" language="german" transition="paper-dialog-transition-bottom">
+            <p>I'm born and raised in Austria, so I'm a native german speaker.</p>
+
+            <paper-button affirmative autofocus>Got it!</paper-button>
+        </paper-dialog>
+
+        <paper-dialog id="dialogEnglish" heading="English skills" language="english" transition="paper-dialog-transition-bottom">
+            <p>I'm passionate about english as a form to communicate with the world.</p>
+
+            <paper-button affirmative autofocus>Got it!</paper-button>
+        </paper-dialog>
+        <paper-dialog id="dialogSpanish" heading="Spanish skills" language="spanish" transition="paper-dialog-transition-bottom">
+            <p>I have spanish roots and therefore my spanish is fluent.</p>
+            <paper-button affirmative autofocus>Got it!</paper-button>
+        </paper-dialog>
+
+    </sidebar-layout>
+  </template>
+    <script>
+        var animating = false;
+
+        Polymer('language-page',{
+            showToast: function(event, detail, sender){
+
+                    switch(event.target.id){
+                        case "germanIcon":
+                            this.$.toast1.show();
+                            break;
+                        case "spanishIcon":
+                            this.$.toast2.show();
+                            break;
+                        case "englishIcon":
+                            this.$.toast3.show();
+                            break;
+                    }
+
+            },
+            showDialog: function(event, detail, sender){
+
+                switch(event.target.id){
+                    case "infoGerman":
+                        this.$.dialogGerman.toggle();
+                        break;
+                    case "infoSpanish":
+                        this.$.dialogSpanish.toggle();
+                        break;
+                    case "infoEnglish":
+                        this.$.dialogEnglish.toggle();
+                        break;
+                }
+
+            },
+            domReady: function(){
+                var progressBars = this.shadowRoot.querySelectorAll("paper-progress");
+                var animating = false;
+
+                var nextProgress = function(){
+                    animating = true;
+                    for(var i = 0; i < progressBars.length; i++){
+                        var pb = progressBars[i];
+                        var maxValue = pb.getAttribute("language-level");
+                        if(pb.value < maxValue){
+                            pb.value += (pb.step || 1);
+                            pb.async(nextProgress,null,50);
+                        }else {
+                            animating = false;
+                        }
+
+                    }
+                };
+
+                for(var i = 0; i < progressBars.length; i++) {
+                    var pb = progressBars[i];
+                    pb.value = progressBars[i].min;
+                }
+
+                if(!animating){
+                    nextProgress();
+                }
+
+
+
+            }
+        });
+
+
+    </script>
+</polymer-element>

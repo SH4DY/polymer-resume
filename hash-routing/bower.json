@@ -1,0 +1,22 @@
+{
+    "name": "Polymer Resume",
+    "version": "0.0.1",
+    "authors": [
+        "Ramon Lopez"
+    ],
+    "dependencies": {
+        "app-router": "~2.0.2",
+        "polymer": "Polymer/polymer#~0.4.2",
+        "platform": "Polymer/platform#~0.4.2",
+        "core-elements": "Polymer/core-elements#~0.4.2",
+        "webcomponentsjs": "Polymer/webcomponentsjs",
+
+
+        "paper-button": "Polymer/paper-button#master",
+        "paper-icon-button": "Polymer/paper-icon-button#master",
+        "paper-progress": "Polymer/paper-progress#master",
+        "paper-dialog": "Polymer/paper-dialog#master",
+        "paper-toast": "Polymer/paper-toast#master"
+
+    }
+}

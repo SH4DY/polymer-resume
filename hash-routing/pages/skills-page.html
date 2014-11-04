@@ -1,0 +1,252 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/layouts/sidebar-layout.html">
+
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="/bower_components/paper-dialog/paper-dialog-transition.html">
+
+
+<polymer-element name="skills-page">
+<template>
+    <style>
+        section {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        div {
+            margin-left: 16px;
+        }
+
+        .chart-legend ul {
+            list-style: none;
+            width: 100%;
+            margin: 30px auto 0;
+        }
+
+        .chart-legend li {
+            text-indent: 16px;
+            line-height: 24px;
+            position: relative;
+            font-weight: 200;
+
+            width: 50%;
+            font-size: 0.8em;
+        }
+
+        .chart-legend li:before {
+            display: block;
+            width: 10px;
+            height: 16px;
+            position: absolute;
+            left: 0;
+            top: 3px;
+            content: "";
+        }
+
+        .row-wrapper {
+            display: -webkit-flex;
+            -webkit-flex-direction: row;
+            -webkit-justify-content: center;
+            /*min-width: 620px;*/
+            max-width: 750px;
+        }
+
+        .java:before {
+            background-color: #e51c23;
+        }
+
+        .android:before {
+            background-color: #009688;
+        }
+
+        .spring:before {
+            background-color: #ff9800;
+        }
+
+        .qtp:before {
+            background-color: #ffeb3b;
+        }
+
+        .selenium:before {
+            background-color: #ffc107;
+        }
+
+        .sql:before {
+            background-color: #795548;
+        }
+
+        .rails:before {
+            background-color: #e91e63;
+        }
+
+        .polymer_dart:before {
+            background-color: #9c27b0;
+        }
+
+        .opengl:before {
+            background-color: #607d8b;
+        }
+    </style>
+    <sidebar-layout selected="skills">
+
+        <div class="title">Skills</div>
+        <section>
+            <div><p>Here I want to give an overview of my skills in relation to each other.</p></div>
+        </section>
+        <section>
+            <div class="row-wrapper">
+                <canvas id="myChart" width="400" height="400"></canvas>
+                <div class="chart-legend">
+                    <ul>
+                        <li class="java">JavaEE</li>
+                        <li class="android">Android</li>
+                        <li class="spring">Spring</li>
+                        <li class="qtp">QTP</li>
+                        <li class="selenium">Selenium</li>
+                        <li class="sql">SQL</li>
+                        <li class="rails">Rails</li>
+                        <li class="polymer_dart">Polymer.Dart</li>
+                        <li class="opengl">OpenGL</li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </sidebar-layout>
+</template>
+<script src="../js/Chart.js"></script>
+<script>
+    Polymer('skills-page', {
+        domReady: function () {
+            var data = [
+                {
+                    value: 80,
+                    color: "#e51c23",
+                    highlight: "#e84e40",
+                    label: "Java EE"
+                },
+                {
+                    value: 50,
+                    color: "#009688",
+                    highlight: "#26a69a",
+                    label: "Android"
+                },
+                {
+                    value: 50,
+                    color: "#ff9800",
+                    highlight: "#ffa726",
+                    label: "Spring"
+                },
+                {
+                    value: 70,
+                    color: "#ffeb3b",
+                    highlight: "#ffee58",
+                    label: "QTP"
+                },
+                {
+                    value: 40,
+                    color: "#ffc107",
+                    highlight: "#ffca28",
+                    label: "Selenium"
+                },
+                {
+                    value: 60,
+                    color: "#795548",
+                    highlight: "#8d6e63",
+                    label: "SQL"
+                },
+                {
+                    value: 20,
+                    color: "#e91e63",
+                    highlight: "#ec407a",
+                    label: "Rails"
+                }  ,
+                {
+                    value: 30,
+                    color: "#9c27b0",
+                    highlight: "#9c27b0",
+                    label: "Polymer.Dart"
+                },
+                {
+                    value: 30,
+                    color: "#607d8b",
+                    highlight: "#78909c",
+                    label: "OpenGL"
+                }
+            ];
+            var ctx = this.shadowRoot.getElementById("myChart").getContext("2d");
+            var myNewChart = new Chart(ctx).PolarArea(data, {responsive: false});
+//                console.log(myNewChart.generateLegend());
+//                this.shadowRoot.getElementById("legend").innerHTML = myNewChart.generateLegend();
+        }
+    });
+
+</script>
+<!--<script type="application/javascript">-->
+
+
+<!--var data = [-->
+<!--{-->
+<!--value: 80,-->
+<!--color: "#e51c23",-->
+<!--highlight: "#e84e40",-->
+<!--label: "Java EE"-->
+<!--},-->
+<!--{-->
+<!--value: 50,-->
+<!--color: "#009688",-->
+<!--highlight: "#26a69a",-->
+<!--label: "Android"-->
+<!--},-->
+<!--{-->
+<!--value: 50,-->
+<!--color: "#ff9800",-->
+<!--highlight: "#ffa726",-->
+<!--label: "Spring"-->
+<!--},-->
+<!--{-->
+<!--value: 70,-->
+<!--color: "#ffeb3b",-->
+<!--highlight: "#ffee58",-->
+<!--label: "QTP"-->
+<!--},-->
+<!--{-->
+<!--value: 40,-->
+<!--color: "#ffc107",-->
+<!--highlight: "#ffca28",-->
+<!--label: "Selenium"-->
+<!--},-->
+<!--{-->
+<!--value: 60,-->
+<!--color: "#795548",-->
+<!--highlight: "#8d6e63",-->
+<!--label: "SQL"-->
+<!--},-->
+<!--{-->
+<!--value: 20,-->
+<!--color: "#e91e63",-->
+<!--highlight: "#ec407a",-->
+<!--label: "Rails"-->
+<!--}  ,-->
+<!--{-->
+<!--value: 30,-->
+<!--color: "#9c27b0",-->
+<!--highlight: "#9c27b0",-->
+<!--label: "Polymer.Dart"-->
+<!--},-->
+<!--{-->
+<!--value: 30,-->
+<!--color: "#607d8b",-->
+<!--highlight: "#78909c",-->
+<!--label: "OpenGL"-->
+<!--}-->
+<!--];-->
+<!--var ctx = document.getElementById("myChart").getContext("2d");-->
+<!--var myNewChart = new Chart(ctx).PolarArea(data, {responsive: false});-->
+<!--console.log(myNewChart.generateLegend());-->
+<!--document.getElementById("legend").innerHTML = myNewChart.generateLegend();-->
+<!--</script>-->
+</polymer-element>
