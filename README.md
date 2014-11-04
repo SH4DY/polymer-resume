@@ -1,4 +1,5 @@
 ##Polymer Resume README
+This is a "digital" CV based on Polymer, timeline.js and Vertical Timeline (see home-page.html)
 
 ##Run it
 
