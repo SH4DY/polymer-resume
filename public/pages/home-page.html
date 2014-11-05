@@ -10,84 +10,90 @@
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog-transition.html">
 
 <polymer-element name="home-page" noscript>
-  <template>
-      <style>
-          div.column-wrapper{
-              display: -webkit-flex;
-              -webkit-flex-direction: column;
-              -webkit-justify-content: center;
-              min-width: 620px;
-              max-width: 750px;
-          }
+    <template>
+        <style>
+            div.column-wrapper {
+                display: -webkit-flex;
+                -webkit-flex-direction: column;
+                -webkit-justify-content: center;
+                /*min-width: 620px;*/
+                max-width: 750px;
+            }
 
-          div.technology{
-              overflow: hidden;
-              display: -webkit-flex;
-              -webkit-flex-direction: row;
-              -webkit-flex-wrap: wrap;
-              -webkit-align-self: center;
-          }
-          section {
-              background-color: #f0f0f0;
-              border-radius: 5px;
-              margin: 10px;
-              padding: 10px;
-              -webkit-align-self: center;
-          }
+            div.technology {
+                overflow: hidden;
+                display: -webkit-flex;
+                -webkit-flex-direction: row;
+                -webkit-flex-wrap: wrap;
+                -webkit-align-self: center;
+            }
 
-          section.technology {
-              width: 400px;
-              -webkit-align-self: center;
-          }
+            section {
+                background-color: #f0f0f0;
+                border-radius: 5px;
+                margin: 10px;
+                padding: 10px;
+                -webkit-align-self: center;
+            }
 
-          div.technology > img {
-              height: 42px;
-              width: 42px;
-              -webkit-align-self: center;
-              margin: 0px 20px;
-          }
+            section.technology {
+                width: 400px;
+                -webkit-align-self: center;
+            }
 
-          div.shape {
-              width: 100px;
-              height: 100px;
-              border-radius: 50%;
-              margin: 35px auto;
-              background: -webkit-radial-gradient(65% 15%, circle, aqua, darkblue);
-              background: -moz-radial-gradient(65% 15%, circle, aqua, darkblue);
-              background: -o-radial-gradient(65% 15%, circle, aqua, darkblue);
-              background: -ms-radial-gradient(65% 15%, circle, aqua, darkblue);
-          }
+            div.technology > img {
+                height: 42px;
+                width: 42px;
+                -webkit-align-self: center;
+                margin: 0px 20px;
+            }
 
-      </style>
+            div.shape {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin: 35px auto;
+                background: -webkit-radial-gradient(65% 15%, circle, aqua, darkblue);
+                background: -moz-radial-gradient(65% 15%, circle, aqua, darkblue);
+                background: -o-radial-gradient(65% 15%, circle, aqua, darkblue);
+                background: -ms-radial-gradient(65% 15%, circle, aqua, darkblue);
+            }
+<
+            /*TODO Position images bottom on narrow screen*/
+        </style>
 
-    <sidebar-layout selected="home">
+        <sidebar-layout selected="home">
 
-      <div class="title">Home</div>
+            <div class="title">Home</div>
 
-        <div class="column-wrapper">
-            <section class="content">I was always a little annoyed seeing those <a
-                    href="http://theultralinx.com/2012/07/creative-graphic-design-resume-cv.html">uber</a>-<a
-                    href="http://www.pinterest.com/rtkrum/infographic-visual-resumes/">cool</a>
-                CV's of the more creative folks, while we programmers and coders are stuck with old-fashioned table-based
-                resumes.
-                My Photoshop and Illustrator
-                skills are decent but I don't want go get hired for that, right? So as a software engineer I decided to code
-                this "interactive" résumé.
-            </section>
-
-            <div class="technology">
-                <img class="left" src="https://www.polymer-project.org/images/logos/p-logo.svg"/>
-
-                <section class="technology">This page is based on the paper-elements-sampler of Polymer. I'm using Dart in the
-                    background and the amazing
-                    JavaScript timelines <a href="http://timeline.knightlab.com/">TimelineJS</a> by Knight Lab and <a
-                            href="http://codyhouse.co/gem/vertical-timeline/">Vertical Timeline</a> by CodyHouse
+            <div class="column-wrapper">
+                <section class="content">I was always a little annoyed seeing those <a
+                        href="http://theultralinx.com/2012/07/creative-graphic-design-resume-cv.html">uber</a>-<a
+                        href="http://www.pinterest.com/rtkrum/infographic-visual-resumes/">cool</a>
+                    CV's of the more creative folks, while we programmers and coders are stuck with old-fashioned
+                    table-based
+                    resumes.
+                    My Photoshop and Illustrator
+                    skills are decent but I don't want go get hired for that, right? So as a software engineer I decided
+                    to code
+                    this "interactive" résumé.
                 </section>
-                <img class="right" src="https://mkw.st/p/_static/logo/dart.png"/>
 
+                <div class="technology">
+                    <img class="left" src="https://www.polymer-project.org/images/logos/p-logo.svg"/>
+
+                    <section class="technology">This page is based on the paper-elements-sampler of Polymer. I'm using
+                        Dart in the
+                        background and the amazing
+                        JavaScript timelines <a href="http://timeline.knightlab.com/">TimelineJS</a> by Knight Lab and
+                        <a
+                                href="http://codyhouse.co/gem/vertical-timeline/">Vertical Timeline</a> by CodyHouse
+                    </section>
+                    <img class="right" src="https://mkw.st/p/_static/logo/dart.png"/>
+
+                </div>
             </div>
-        </div>
 
-    </sidebar-layout>
-  </template>
+        </sidebar-layout>
+    </template>
 </polymer-element>

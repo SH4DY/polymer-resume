@@ -4,17 +4,17 @@
 <link rel="import" href="/bower_components/core-toolbar/core-toolbar.html">
 <link rel="import" href="/bower_components/core-item/core-item.html">
 
-<polymer-element name="sidebar-layout" attributes="selected" noscript>
+<polymer-element name="sidebar-layout" attributes="selected">
   <template>
     <link rel="stylesheet" href="sidebar-layout.css">
     <core-scaffold>
       <core-header-panel navigation flex mode="seamed">
         <core-toolbar>Ramón López</core-toolbar>
-          <core-item icon="home" label="Home" active?="{{selected == 'home'}}"><a href="/#"></a></core-item>
-        <core-item icon="language" label="Languages" active?="{{selected == 'languages'}}"><a href="/#/languages"></a></core-item>
-        <core-item icon="accessibility" label="Life" active?="{{selected == 'life'}}"><a href="/#/life"></a></core-item>
-          <core-item icon="create" label="Skills" active?="{{selected == 'skills'}}"><a href="/#/skills"></a></core-item>
-          <core-item icon="account-balance" label="Education" active?="{{selected == 'education'}}"><a href="/#/education"></a></core-item>
+          <core-item icon="home" label="Home" on-tap="{{navigateTo}}" active?="{{selected == 'home'}}"></a></core-item>
+        <core-item icon="language" label="Languages" on-tap="{{navigateTo}}" active?="{{selected == 'languages'}}"><a href="/#/languages"></a></core-item>
+        <core-item icon="accessibility" label="Life" on-tap="{{navigateTo}}" active?="{{selected == 'life'}}"><a href="/#/life"></a></core-item>
+          <core-item icon="create" label="Skills" on-tap="{{navigateTo}}" active?="{{selected == 'skills'}}"><a href="/#/skills"></a></core-item>
+          <core-item icon="account-balance" label="Education" on-tap="{{navigateTo}}" active?="{{selected == 'education'}}"><a href="/#/education"></a></core-item>
       </core-header-panel>
       <div tool>
         <content select=".title"></content>
@@ -24,4 +24,31 @@
       </div>
     </core-scaffold>
   </template>
+    <script>
+        Polymer("sidebar-layout",{
+            navigateTo: function(event, detail, sender){
+                switch(sender.getAttribute("label")){
+                    case "Home":
+                        document.querySelector('app-router').go('/');
+                        break;
+                    case "Languages":
+                        document.querySelector('app-router').go('/languages');
+                        break;
+                    case "Life":
+                        document.querySelector('app-router').go('/life');
+                        break;
+                    case "Skills":
+                        document.querySelector('app-router').go('/skills');
+                        break;
+                    case "Education":
+                        document.querySelector('app-router').go('/education');
+                        break;
+                    default:
+                        document.querySelector('app-router').go('/error');
+                }
+                console.log(sender.getAttribute("label") + "NAVIGATE");
+
+            }
+        });
+    </script>
 </polymer-element>
